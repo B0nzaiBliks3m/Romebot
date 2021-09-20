@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  constructor() {
+    // locking screen orientation to avoid landscape page layout disaster
+    window.screen.orientation.lock('portrait');
+  }
 }

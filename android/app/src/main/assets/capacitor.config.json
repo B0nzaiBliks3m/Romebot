@@ -1,0 +1,6 @@
+{
+	"appId": "com.romebot.org",
+	"appName": "Romebot",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

@@ -1,17 +1,39 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+    <div class="romebotScreen">
+        <div class="romebotCanvas">
+            <div class="screen">
+                <div class="result-line">
+                    <ion-label class="ion-text-wrap" color="light">{{ result }}</ion-label>
+                </div>
+                <div class="input-line">
+                    <ion-label class="ion-text-wrap" color="secondary">{{ keyPressString }}</ion-label>
+                </div>
+            </div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+            <div class="keyboard">
+                <ng-container *ngFor="let item of romanButtonMap; let i = index">
+                    <ng-container *ngIf="i < 6">
+                        <ion-button [disabled]="!romanButtonMap[i].state" class="romanNumeralBtn"
+                            (click)="processClick(item.name)">
+                            {{ item.name }}
+                        </ion-button>
+                    </ng-container>
+                </ng-container>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+                <ion-button slot="icon-only" [disabled]="keyPressString.length < 1"
+                    class="romanNumeralBtn utility" color="warning" (click)="processClick('backspace')">
+                    <ion-icon size="large" name="backspace-outline"></ion-icon>
+                </ion-button>
+
+                <ion-button [disabled]="!romanButtonMap[6].state" class="romanNumeralBtn" (click)="processClick(romanButtonMap[6].name)">
+                    {{ romanButtonMap[6].name }}
+                </ion-button>
+
+                <ion-button slot="icon-only" [disabled]="keyPressString.length < 1"
+                    class="romanNumeralBtn utility" color="danger" (click)="processClick('clear')">
+                    <ion-icon name="trash-outline"></ion-icon>
+                </ion-button>
+            </div>
+        </div>
+    </div>
 </ion-content>

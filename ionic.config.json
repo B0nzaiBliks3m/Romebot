@@ -1,5 +1,7 @@
 {
   "name": "Romebot",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }
